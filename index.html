@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adventure Awaits</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <div id="blog-form">
-        <input type="text" id="blog-title" placeholder="Blog Title">
-        <textarea id="blog-content" placeholder="Blog Content"></textarea>
-        <button onclick="createBlogPost()">Post Blog</button>
-    </div>
+    <h1>Fitness Blog</h1>
 
-    <div id="workout-form">
-        <input type="text" id="workout-type" placeholder="Workout Type">
-        <input type="number" id="workout-duration" placeholder="Duration (in minutes)">
-        <textarea id="workout-notes" placeholder="Notes"></textarea>
-        <button onclick="createWorkout()">Add Workout</button>
-    </div>
+    <section id="blog-section">
+        <h2>Blog Posts</h2>
+        <div id="blog-form">
+            <input type="text" id="blog-title" placeholder="Blog Title">
+            <textarea id="blog-content" placeholder="Blog Content"></textarea>
+            <button onclick="createBlogPost()">Post Blog</button>
+        </div>
+        <div id="blog-posts"></div>
+    </section>
 
-    <div id="blog-posts"></div>
-    <div id="workouts"></div>
+    <section id="workout-section">
+        <h2>Workouts</h2>
+        <div id="workout-form">
+            <input type="text" id="workout-type" placeholder="Workout Type">
+            <input type="number" id="workout-duration" placeholder="Duration (in minutes)">
+            <textarea id="workout-notes" placeholder="Notes"></textarea>
+            <button onclick="createWorkout()">Add Workout</button>
+        </div>
+        <div id="workouts"></div>
+    </section>
+
 
     <script src="script.js"></script>
 </body>
