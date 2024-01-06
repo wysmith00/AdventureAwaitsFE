@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adventure Awaits</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="blog-form">
+        <input type="text" id="blog-title" placeholder="Blog Title">
+        <textarea id="blog-content" placeholder="Blog Content"></textarea>
+        <button onclick="createBlogPost()">Post Blog</button>
+    </div>
+
+    <div id="workout-form">
+        <input type="text" id="workout-type" placeholder="Workout Type">
+        <input type="number" id="workout-duration" placeholder="Duration (in minutes)">
+        <textarea id="workout-notes" placeholder="Notes"></textarea>
+        <button onclick="createWorkout()">Add Workout</button>
+    </div>
+
+    <div id="blog-posts"></div>
+    <div id="workouts"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
