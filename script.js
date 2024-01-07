@@ -1,10 +1,20 @@
-const { default: axios } = require("axios");
-
 function createBlogPost() {
     const title = document.getElementById('blog-title').value;
     const content = document.getElementById('blog-content').value;
 
-    axios.post('/api/bloginfos', { title, content })
+    axios.post('http://localhost:3000/api/bloginfos', { title, content })
+        .then(response => {
+            console.log(response);
+            fetchAllBlogPosts();
+        })
+        .catch(error => console.error(error));
+}
+
+function updateBlogPost(id) {
+    const title = document.getElementById('edit-blog-title').value;
+    const content = document.getElementById('edit-blog-content').value;
+
+    axios.put(`http://localhost:3000/api/bloginfos/${id}`, { title, content })
         .then(response => {
             console.log(response);
             fetchAllBlogPosts();
@@ -13,7 +23,7 @@ function createBlogPost() {
 }
 
 function fetchAllBlogPosts() {
-    axios.get('/api/bloginfos')
+    axios.get('http://localhost:3000/api/bloginfos')
         .then(response => {
             displayBlogPosts(response.data);
         })
@@ -30,7 +40,26 @@ function displayBlogPosts(posts) {
             <p>${post.content}</p>
         `;
         postsContainer.appendChild(postElement);
+        const editButton = document.createElement('button');
+        editButton.innerText = 'Edit';
+        editButton.addEventListener('click', () => showEditBlogForm(post));
+        postElement.appendChild(editButton);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'Delete';
+        deleteButton.addEventListener('click', () => deleteBlogPost(post.id));
+        postElement.appendChild(deleteButton);
     });
+}
+   
+
+function deleteBlogPost(id) {
+    axios.delete(`http://localhost:3000/api/bloginfos/${id}`)
+        .then(response => {
+            console.log(response);
+            fetchAllBlogPosts();
+        })
+        .catch(error => console.error(error));
 }
 
 function createWorkout() {
@@ -38,7 +67,7 @@ function createWorkout() {
     const duration = document.getElementById('workout-duration').value;
     const notes = document.getElementById('workout-notes').value;
 
-    axios.post('/api/workouts', { type, duration, notes })
+    axios.post('http://localhost:3000/api/workouts', { type, duration, notes })
         .then(response => {
             console.log(response);
             fetchAllWorkouts();
@@ -47,7 +76,7 @@ function createWorkout() {
 }
 
 function fetchAllWorkouts() {
-    axios.get('/api/workouts')
+    axios.get('http://localhost:3000/api/workouts')
         .then(response => {
             displayWorkouts(response.data);
         })
@@ -68,7 +97,38 @@ function displayWorkouts(workouts) {
     });
 }    
 
+function updateWorkout(id) {
+    const type = document.getElementById('edit-workout-type').value;
+    const duration = document.getElementById('edit-workout-duration').value;
+    const notes = document.getElementById('edit-workout-notes').value;
+
+    axios.put(`http://localhost:3000/api/workouts/${id}`, { type, duration, notes })
+        .then(response => {
+            console.log(response);
+            fetchAllWorkouts();
+        })
+        .catch(error => console.error(error));
+}
+
+function deleteWorkout(id) {
+    axios.delete(`/http://localhost:3000/api/workouts/${id}`)
+        .then(response => {
+            console.log(response);
+            fetchAllWorkouts();
+        })
+        .catch(error => console.error(error));
+}
+
+function showEditBlogForm(post) {
+
+}
+
+function confirmEditBlog() {
+
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     fetchAllBlogPosts();
     fetchAllWorkouts();
 });
+

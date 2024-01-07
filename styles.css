@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: lightblue;
 }
 
 h1, h2 {
@@ -18,19 +18,19 @@ input[type="text"], input[type="number"], textarea {
     margin: 10px 0;
     padding: 10px;
     width: 80%;
-    border: 1px solid #ddd;
+    border: 1px solid;
 }
 
 button {
     padding: 10px 20px;
-    background-color: #5cb85c;
+    background-color: gray;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #4cae4c;
+    background-color: lightgreen;
 }
 
 #blog-posts, #workouts {
@@ -47,4 +47,21 @@ button:hover {
 
 #blog-posts div:last-child, #workouts div:last-child {
     border-bottom: none;
+}
+
+.edit-button, .delete-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: orange;
+}
+
+.delete-button {
+    background-color: red; 
 }

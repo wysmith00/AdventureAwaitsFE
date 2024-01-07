@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <h1>Fitness Blog</h1>
+    <h1>Adventure Awaits</h1>
 
     <section id="blog-section">
         <h2>Blog Posts</h2>
@@ -18,6 +18,11 @@
             <button onclick="createBlogPost()">Post Blog</button>
         </div>
         <div id="blog-posts"></div>
+        <div id="edit-blog-form" style="display:none;">
+            <input type="text" id="edit-blog-title" placeholder="Edit Blog Title">
+            <textarea id="edit-blog-content" placeholder="Edit Blog Content"></textarea>
+            <button onclick="confirmEditBlog()">Update Blog</button>
+        </div>
     </section>
 
     <section id="workout-section">
@@ -27,6 +32,12 @@
             <input type="number" id="workout-duration" placeholder="Duration (in minutes)">
             <textarea id="workout-notes" placeholder="Notes"></textarea>
             <button onclick="createWorkout()">Add Workout</button>
+        <div id="edit-workout-form" style="display:none;">
+            <input type="text" id="edit-workout-type" placeholder="Edit Workout Type">
+            <input type="number" id="edit-workout-duration" placeholder="Edit Duration (in minutes)">
+            <textarea id="edit-workout-notes" placeholder="Edit Notes"></textarea>
+            <button onclick="confirmEditWorkout()">Update Workout</button>
+        </div>
         </div>
         <div id="workouts"></div>
     </section>
