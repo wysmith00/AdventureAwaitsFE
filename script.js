@@ -14,7 +14,7 @@ function updateBlogPost(id) {
     const title = document.getElementById('edit-blog-title').value;
     const content = document.getElementById('edit-blog-content').value;
 
-    axios.put('http://localhost:3000/api/bloginfos/${id}', { title, content })
+    axios.put(`http://localhost:3000/api/bloginfos/${id}`, { title, content })
         .then(response => {
             console.log(response);
             fetchAllBlogPosts();
@@ -79,7 +79,7 @@ function displayBlogPosts(posts) {
    
 
 function deleteBlogPost(id) {
-    axios.delete('http://localhost:3000/api/bloginfos/${id}')
+    axios.delete(`http://localhost:3000/api/bloginfos/${id}`)
         .then(response => {
             console.log(response);
             fetchAllBlogPosts();
@@ -139,7 +139,7 @@ function updateWorkout(id) {
     const duration = document.getElementById('edit-workout-duration').value;
     const notes = document.getElementById('edit-workout-notes').value;
 
-    axios.put('http://localhost:3000/api/workouts/${id}', { type, duration, notes })
+    axios.put(`http://localhost:3000/api/workouts/${id}`, { type, duration, notes })
         .then(response => {
             console.log(response);
             fetchAllWorkouts();
@@ -148,7 +148,7 @@ function updateWorkout(id) {
 }
 
 function deleteWorkout(id) {
-    axios.delete('/http://localhost:3000/api/workouts/${id}')
+    axios.delete(`/http://localhost:3000/api/workouts/${id}`)
         .then(response => {
             console.log(response);
             fetchAllWorkouts();
