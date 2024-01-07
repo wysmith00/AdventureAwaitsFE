@@ -14,12 +14,37 @@ function updateBlogPost(id) {
     const title = document.getElementById('edit-blog-title').value;
     const content = document.getElementById('edit-blog-content').value;
 
-    axios.put(`http://localhost:3000/api/bloginfos/${id}`, { title, content })
+    axios.put('http://localhost:3000/api/bloginfos/${id}', { title, content })
         .then(response => {
             console.log(response);
             fetchAllBlogPosts();
         })
         .catch(error => console.error(error));
+}
+
+function showEditBlogForm(post) {
+    document.getElementById('edit-blog-title').value = post.title;
+    document.getElementById('edit-blog-content').value = post.content;
+    document.getElementById('edit-blog-form').style.display = 'block';
+    document.getElementById('confirm-edit-blog').onclick = function() { confirmEditBlog(post.id); };
+}
+
+function confirmEditBlog(id) {
+    updateBlogPost(id);
+    document.getElementById('edit-blog-form').style.display = 'none';
+}
+
+function showEditWorkoutForm(workout) {
+    document.getElementById('edit-workout-type').value = workout.type;
+    document.getElementById('edit-workout-duration').value = workout.duration;
+    document.getElementById('edit-workout-notes').value = workout.notes;
+    document.getElementById('edit-workout-form').style.display = 'block';
+    document.getElementById('confirm-edit-workout').onclick = function() { confirmEditWorkout(workout.id); };
+}
+
+function confirmEditWorkout(id) {
+    updateWorkout(id);
+    document.getElementById('edit-workout-form').style.display = 'none';
 }
 
 function fetchAllBlogPosts() {
@@ -54,7 +79,7 @@ function displayBlogPosts(posts) {
    
 
 function deleteBlogPost(id) {
-    axios.delete(`http://localhost:3000/api/bloginfos/${id}`)
+    axios.delete('http://localhost:3000/api/bloginfos/${id}')
         .then(response => {
             console.log(response);
             fetchAllBlogPosts();
@@ -93,6 +118,18 @@ function displayWorkouts(workouts) {
             <p>Duration: ${workout.duration} minutes</p>
             <p>Notes: ${workout.notes}</p>
         `;
+        const editButton = document.createElement('button');
+        editButton.innerText = 'Edit';
+        editButton.classList.add('edit-button');
+        editButton.addEventListener('click', () => showEditWorkoutForm(workout));
+        workoutElement.appendChild(editButton);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'Delete';
+        deleteButton.classList.add('delete-button');
+        deleteButton.addEventListener('click', () => deleteWorkout(workout.id));
+        workoutElement.appendChild(deleteButton);
+        
         workoutsContainer.appendChild(workoutElement);
     });
 }    
@@ -102,7 +139,7 @@ function updateWorkout(id) {
     const duration = document.getElementById('edit-workout-duration').value;
     const notes = document.getElementById('edit-workout-notes').value;
 
-    axios.put(`http://localhost:3000/api/workouts/${id}`, { type, duration, notes })
+    axios.put('http://localhost:3000/api/workouts/${id}', { type, duration, notes })
         .then(response => {
             console.log(response);
             fetchAllWorkouts();
@@ -111,20 +148,12 @@ function updateWorkout(id) {
 }
 
 function deleteWorkout(id) {
-    axios.delete(`/http://localhost:3000/api/workouts/${id}`)
+    axios.delete('/http://localhost:3000/api/workouts/${id}')
         .then(response => {
             console.log(response);
             fetchAllWorkouts();
         })
         .catch(error => console.error(error));
-}
-
-function showEditBlogForm(post) {
-
-}
-
-function confirmEditBlog() {
-
 }
 
 document.addEventListener('DOMContentLoaded', function() {
