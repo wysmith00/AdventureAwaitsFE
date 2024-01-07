@@ -28,7 +28,7 @@ function showEditBlogForm(post) {
     document.getElementById('edit-blog-title').value = post.title;
     document.getElementById('edit-blog-content').value = post.content;
     document.getElementById('edit-blog-form').style.display = 'block';
-    document.getElementById('confirm-edit-blog').onclick = function() { confirmEditBlog(post.id); };
+    document.getElementById('confirm-edit-blog').onclick = function() { confirmEditBlog(post._id); };
 }
 
 function confirmEditBlog(id) {
@@ -41,7 +41,7 @@ function showEditWorkoutForm(workout) {
     document.getElementById('edit-workout-duration').value = workout.duration;
     document.getElementById('edit-workout-notes').value = workout.notes;
     document.getElementById('edit-workout-form').style.display = 'block';
-    document.getElementById('confirm-edit-workout').onclick = function() { confirmEditWorkout(workout.id); };
+    document.getElementById('confirm-edit-workout').onclick = function() { confirmEditWorkout(workout._id); };
 }
 
 function confirmEditWorkout(id) {
@@ -74,7 +74,7 @@ function displayBlogPosts(posts) {
 
         const deleteButton = document.createElement('button');
         deleteButton.innerText = 'Delete';
-        deleteButton.addEventListener('click', () => deleteBlogPost(post.id));
+        deleteButton.addEventListener('click', () => deleteBlogPost(post._id));
         postElement.appendChild(deleteButton);
     });
 }
@@ -129,7 +129,7 @@ function displayWorkouts(workouts) {
         const deleteButton = document.createElement('button');
         deleteButton.innerText = 'Delete';
         deleteButton.classList.add('delete-button');
-        deleteButton.addEventListener('click', () => deleteWorkout(workout.id));
+        deleteButton.addEventListener('click', () => deleteWorkout(workout._id));
         workoutElement.appendChild(deleteButton);
         
         workoutsContainer.appendChild(workoutElement);
@@ -162,4 +162,3 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchAllBlogPosts();
     fetchAllWorkouts();
 });
-
