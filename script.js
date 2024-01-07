@@ -11,12 +11,14 @@ function createBlogPost() {
 }
 
 function updateBlogPost(id) {
+    console.log("Post ID:", id);
     const title = document.getElementById('edit-blog-title').value;
     const content = document.getElementById('edit-blog-content').value;
+    console.log("Updating post:", id, title, content);
 
     axios.put(`http://localhost:3000/api/bloginfos/${id}`, { title, content })
         .then(response => {
-            console.log(response);
+            console.log("Response:", response);
             fetchAllBlogPosts();
         })
         .catch(error => console.error(error));
@@ -148,7 +150,7 @@ function updateWorkout(id) {
 }
 
 function deleteWorkout(id) {
-    axios.delete(`/http://localhost:3000/api/workouts/${id}`)
+    axios.delete(`http://localhost:3000/api/workouts/${id}`)
         .then(response => {
             console.log(response);
             fetchAllWorkouts();
