@@ -8,4 +8,5 @@ MVP: As a user I want to be able to see the posts of all workouts and blogs. As 
 
 IceBox: Weather cacheing, show location, stronger UI
 
+Netlify: https://classy-marzipan-5480e8.netlify.app/
 
